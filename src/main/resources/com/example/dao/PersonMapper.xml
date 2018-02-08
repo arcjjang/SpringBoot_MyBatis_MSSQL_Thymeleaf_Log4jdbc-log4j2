@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.dao.PersonMapper">
+
+    <select id="getPersonList" resultType="Person">
+        SELECT
+        id
+        , name
+        , age
+        FROM PERSON
+    </select>
+
+    <select id="findPersonById" parameterType="String" resultType="Person">
+        SELECT
+        id
+        , name
+        , age
+        FROM PERSON
+        WHERE id = #{personId}
+    </select>
+
+    <insert id="insertPerson" parameterType="Person">
+        INSERT INTO PERSON (
+        id
+        , name
+        , age
+        ) VALUES (
+        #{person.id, jdbcType=VARCHAR}
+        , #{person.name, jdbcType=VARCHAR}
+        , #{person.age, jdbcType=NUMERIC}
+        )
+    </insert>
+
+    <update id="updatePerson" parameterType="Person">
+        UPDATE PERSON
+        SET
+        name = #{person.name, jdbcType=VARCHAR}
+        , age = #{person.age, jdbcType=NUMERIC}
+        WHERE id = #{person.id}
+    </update>
+
+    <delete id="deletePerson" parameterType="String">
+        DELETE FROM PERSON WHERE id = #{personId}
+    </delete>
+
+
+</mapper>
