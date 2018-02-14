@@ -24,3 +24,5 @@ dependencies {
 .
 .
 ```
+
+# Just use "Spring Initializr -> SQL -> SQL Server" ...
